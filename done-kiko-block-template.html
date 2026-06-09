@@ -7,141 +7,45 @@
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; padding-top: 20px; padding-bottom: 20px; }
     .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e1e6eb; }
-    
-    /* ==========================================================================
-       IMAGE BANNER TOP BOX SYSTEM
-       ========================================================================== */
-    .header-banner-box { 
-      width: 100%; 
-      display: block; 
-      margin: 0; 
-      padding: 0;
-      line-height: 0;
-    }
-    .header-banner-img { 
-      width: 100%; 
-      height: auto; 
-      display: block; 
-      border: 0;
-    }
-
+    .header-banner-box { width: 100%; display: block; margin: 0; padding: 0; line-height: 0; }
+    .header-banner-img { width: 100%; height: auto; display: block; border: 0; }
     .content { padding: 40px 30px; text-align: center; background-color: #ffffff; }
     .content p { color: #334155; font-size: 15px; line-height: 1.6; margin-bottom: 25px; text-align: left; }
     .video-container { margin: 30px auto; text-align: center; max-width: 480px; }
     .video-thumbnail { width: 100%; max-width: 480px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: block; border: 1px solid #cbd5e1; }
     .links-container { margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; }
-    
-    /* Main Trigger Button */
     .btn { display: inline-block; width: 85%; background: linear-gradient(90deg, #E2C974 0%, #D4AF37 100%); color: #0A192F !important; text-decoration: none; padding: 14px 24px; font-weight: 800; border-radius: 5px; margin-bottom: 15px; font-size: 15px; letter-spacing: 0.5px; box-sizing: border-box; border: none; cursor: pointer; text-transform: uppercase; }
-    
-    /* Contact Block Styling */
     .contact-block { margin-top: 35px; padding: 20px; background-color: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; text-align: left; }
     .contact-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #0A192F; margin: 0 0 10px 0; }
     .contact-name { font-size: 16px; font-weight: 700; color: #334155; margin-bottom: 8px; }
     .contact-link { display: inline-block; color: #D4AF37; font-weight: 600; text-decoration: none; margin-right: 20px; font-size: 14px; }
     .contact-link:hover { text-decoration: underline; }
-    
     .footer { background-color: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #64748B; border-top: 1px solid #e2e8f0; }
-
-    /* ==========================================================================
-       DYNAMIC POPUP MODAL STYLING
-       ========================================================================== */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(2, 6, 15, 0.95);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      transform: scale(0.95);
-      transition: transform 0.3s ease;
-      max-height: 90vh; 
-      overflow-y: auto;
-    }
-    .modal-overlay.active .modal-wrapper {
-      transform: scale(1);
-    }
-    .modal-close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: #ffffff;
-      font-size: 35px;
-      cursor: pointer;
-      z-index: 10000;
-      line-height: 1;
-    }
-    .modal-close-btn:hover {
-      color: #E2C974;
-    }
-
-    .responsive-grid {
-      display: grid; 
-      grid-template-columns: 1fr 1.1fr; 
-      gap: 50px; 
-      align-items: center;
-    }
-    
-    @media (max-width: 900px) {
-      .responsive-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-      .modal-close-btn { top: 10px; right: 15px; }
-    }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 15, 0.95); backdrop-filter: blur(15px); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px; box-sizing: border-box; }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-wrapper { position: relative; width: 100%; max-width: 1200px; margin: auto; transform: scale(0.95); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
+    .modal-overlay.active .modal-wrapper { transform: scale(1); }
+    .modal-close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: #ffffff; font-size: 35px; cursor: pointer; z-index: 10000; line-height: 1; }
+    .responsive-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: center; }
+    @media (max-width: 900px) { .responsive-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
   </style>
 </head>
 <body>
-
   <div class="email-container">
-    
-    <!-- HIGH-IMPACT DOSSIER VISUAL HEADER BOX -->
     <div class="header-banner-box">
-      <img src="Gemini_Generated_Image_taeinetaeinetaei.png" alt="Commercial Real Estate Dossier Banner" class="header-banner-img">
+      <img src="https://raw.githubusercontent.com/Wilmar2020/Kiko-villas-condo-hotel-salon-diner/main/Block-banner.png" alt="Commercial Real Estate Dossier Banner" class="header-banner-img">
     </div>
-
-    <!-- Main Body -->
     <div class="content">
       <p>Hello,</p>
-      
-      <p>We are pleased to present the exclusive investment profile for <strong>The Prestigious Los Corales Commercial Asset Portfolio</strong>, situated within the highly coveted Hotel and Country Club zone of Bávaro-Punta Cana.</p>
-      
-      <p>This prime 19-unit asset class commands direct frontage alongside global luxury anchors Hyatt, Dreams, Secrets, and Meliá Resorts, with the prestigious Cocotal Golf & Country Club as its immediate neighbor. Positioned to capture premier traffic in a world-class market that has welcomed over 8 million visitors in 2026, the portfolio features an active luxury salon, a curated 9-seat outdoor diner, and rare operational infrastructure autonomy.</p>
-      
-      <p>Ahead of our formal briefing, please review the foundational walkthrough video and interactive proforma analysis provided below.</p>
-      
-      <!-- Video Frame -->
+      <p>We are pleased to present the exclusive investment profile for <strong>The Prestigious Los Corales Commercial Asset Portfolio</strong>.</p>
       <div class="video-container">
         <a href="https://youtube.com/shorts/BFDlbNT0f48" target="_blank">
           <img src="https://img.youtube.com/vi/BFDlbNT0f48/maxresdefault.jpg" alt="Watch Property Video" class="video-thumbnail">
         </a>
       </div>
-
-      <!-- Action Button -->
       <div class="links-container">
-        <button class="btn" id="openProformaBtn">
-          Open Interactive Live Proforma
-        </button>
+        <button class="btn" id="openProformaBtn">Open Interactive Live Proforma</button>
       </div>
-
-      <!-- Live Contact Section -->
       <div class="contact-block">
         <div class="contact-title">Executive Contact</div>
         <div class="contact-name">William Martinez</div>
@@ -149,134 +53,26 @@
         <a href="mailto:William.blockcoinrealestate@gmail.com" class="contact-link">✉️ Email Portfolio Desk</a>
       </div>
     </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      &copy; 2026 Analytica 84. All rights reserved.<br>
-      Beyond Technical Analysis. Confidential Investment Materials.
-    </div>
+    <div class="footer">&copy; 2026 Analytica 84. All rights reserved.</div>
   </div>
 
-  <!-- ==========================================================================
-       DYNAMIC POPUP LAYER
-       ========================================================================== -->
   <div class="modal-overlay" id="proformaModal">
     <div class="modal-wrapper">
-      <button class="modal-close-btn" id="closeProformaBtn" aria-label="Close Modal">&times;</button>
-      
-      <!-- LUXURY PORTAL INTERFACE SECTION -->
-      <section style="
-          position: relative; 
-          background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'); 
-          background-size: cover; 
-          background-position: center; 
-          padding: 60px 40px; 
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-          color: #F8FAFC;
-          overflow: hidden;
-          border-radius: 12px;
-          border: 1px solid rgba(226, 201, 116, 0.2);
-      ">
-          
-          <div style="
-              position: absolute; 
-              top: 0; left: 0; right: 0; bottom: 0; 
-              background: linear-gradient(135deg, rgba(10, 25, 47, 0.94) 0%, rgba(2, 6, 15, 0.98) 100%); 
-              z-index: 1;
-          "></div>
-
-          <div class="responsive-grid" style="position: relative; z-index: 2; max-width: 1100px; margin: 0 auto;">
-              
-              <div style="padding-right: 10px; text-align: left;">
-                  <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; color: #E2C974; margin-bottom: 15px;">Institutional Portfolio Sale</div>
-                  <h2 style="font-size: 38px; font-weight: 900; text-transform: uppercase; margin: 0 0 20px 0; color: #ffffff; letter-spacing: -1px; line-height: 1.1;">
-                      Commercial Real Estate <br><span style="color: #E2C974; font-weight: 300;">Dossier</span>
-                  </h2>
-                  <div style="font-size: 32px; font-weight: 900; color: #E2C974; margin-bottom: 30px; letter-spacing: 1px;">$2,800,000 USD</div>
-                  
-                  <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #E2E8F0; line-height: 1.6;">
-                      <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
-                          <span style="color: #E2C974; font-size: 12px; margin-top: 2px;">■</span> 
-                          <span><strong>19 Master-Planned Assets:</strong> Premium residential and commercial spaces unified under a single title.</span>
-                      </li>
-                      <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
-                          <span style="color: #E2C974; font-size: 12px; margin-top: 2px;">■</span> 
-                          <span><strong>Infrastructure Autonomy:</strong> Private water well positioned on its own land title, completely wiping heavy municipal water OpEx from the sheet.</span>
-                      </li>
-                      <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
-                          <span style="color: #E2C974; font-size: 12px; margin-top: 2px;">■</span> 
-                          <span><strong>Prime Luxury Corridor:</strong> Positioned perfectly in El Cortecito, directly capturing overflow from neighbors Hyatt, Dreams, and Secrets Resorts.</span>
-                      </li>
-                  </ul>
-              </div>
-
-              <div style="
-                  background: rgba(10, 25, 47, 0.75); 
-                  backdrop-filter: blur(20px); 
-                  -webkit-backdrop-filter: blur(20px);
-                  border: 1px solid rgba(255, 255, 255, 0.1); 
-                  border-radius: 8px; 
-                  padding: 35px; 
-                  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-              ">
-                  <h3 style="margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 15px; color: #ffffff; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; text-align: left;">
-                      Financial Parity & Yield Analysis
-                  </h3>
-                  
-                  <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 30px; text-align: left;">
-                      <thead>
-                          <tr style="border-bottom: 2px solid rgba(226, 201, 116, 0.3); color: #E2C974; font-weight: 800; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;">
-                              <th style="padding: 10px 5px;">Unit Inventory</th>
-                              <th style="padding: 10px 5px;">Current Base</th>
-                              <th style="padding: 10px 5px; text-align: right;">Target Proforma</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                              <td style="padding: 12px 5px; color: #ffffff; font-weight: 600;">11x Residential Apartments</td>
-                              <td style="padding: 12px 5px; color: #94A3B8;">$5,250/mo</td>
-                              <td style="padding: 12px 5px; color: #E2C974; font-weight: 800; text-align: right;">$7,450/mo</td>
-                          </tr>
-                          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                              <td style="padding: 12px 5px; color: #ffffff; font-weight: 600;">5x Luxury Rooms (Nightly Track)</td>
-                              <td style="padding: 12px 5px; color: #94A3B8;">$7,350/mo</td>
-                              <td style="padding: 12px 5px; color: #E2C974; font-weight: 800; text-align: right;">$8,400/mo</td>
-                          </tr>
-                          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                              <td style="padding: 12px 5px; color: #ffffff; font-weight: 600;">2x Commercial Units (Salon/Diner)</td>
-                              <td style="padding: 12px 5px; color: #94A3B8;">$2,100/mo</td>
-                              <td style="padding: 12px 5px; color: #E2C974; font-weight: 800; text-align: right;">$2,800/mo</td>
-                          </tr>
-                          <tr style="background: rgba(226, 201, 116, 0.08); font-weight: 800; color: #ffffff;">
-                              <td style="padding: 14px 5px; border-top: 1px solid rgba(226, 201, 116, 0.3); text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Annualized Realized Yield</td>
-                              <td style="padding: 14px 5px; border-top: 1px solid rgba(226, 201, 116, 0.3); color: #CBD5E1;">$194,400</td>
-                              <td style="padding: 14px 5px; border-top: 1px solid rgba(226, 201, 116, 0.3); color: #E2C974; font-weight: 900; text-align: right; font-size: 14px;">$247,800</td>
-                          </tr>
-                      </tbody>
-                  </table>
-
-                  <a href="YOUR_GOOGLE_SHEETS_URL_HERE" target="_blank" style="
-                      display: block; 
-                      width: 100%; 
-                      text-align: center; 
-                      box-sizing: border-box; 
-                      padding: 16px 0; 
-                      background: linear-gradient(90deg, #E2C974 0%, #D4AF37 100%); 
-                      color: #0A192F; 
-                      font-size: 12px; 
-                      font-weight: 800; 
-                      text-transform: uppercase; 
-                      letter-spacing: 2px; 
-                      text-decoration: none; 
-                      border-radius: 4px; 
-                      box-shadow: 0 4px 15px rgba(226, 201, 116, 0.2);
-                  ">
-                      Open Interactive Live Proforma
-                  </a>
-              </div>
+      <button class="modal-close-btn" id="closeProformaBtn">&times;</button>
+      <section style="position: relative; background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'); background-size: cover; padding: 60px 40px; color: #F8FAFC; border-radius: 12px; border: 1px solid rgba(226, 201, 116, 0.2);">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(10, 25, 47, 0.94) 0%, rgba(2, 6, 15, 0.98) 100%); z-index: 1;"></div>
+        <div class="responsive-grid" style="position: relative; z-index: 2; max-width: 1100px; margin: 0 auto;">
+          <div style="padding-right: 10px; text-align: left;">
+            <h2 style="font-size: 38px; font-weight: 900; text-transform: uppercase; margin: 0 0 20px 0; color: #ffffff;">Commercial Real Estate <span style="color: #E2C974;">Dossier</span></h2>
+            <div style="font-size: 32px; font-weight: 900; color: #E2C974; margin-bottom: 30px;">$2,800,000 USD</div>
           </div>
+          <div style="background: rgba(10, 25, 47, 0.75); padding: 35px; border-radius: 8px;">
+            <a href="https://wilmar2020.github.io/Kiko-villas-condo-hotel-salon-diner/kiko-current-target-potential-proforma.html" target="_blank" style="display: block; width: 100%; text-align: center; padding: 16px 0; background: linear-gradient(90deg, #E2C974 0%, #D4AF37 100%); color: #0A192F; font-weight: 800; text-decoration: none; border-radius: 4px;">
+              Open Interactive Live Proforma
+            </a>
+          </div>
+        </div>
       </section>
-
     </div>
   </div>
 
@@ -284,25 +80,8 @@
     const modal = document.getElementById('proformaModal');
     const openBtn = document.getElementById('openProformaBtn');
     const closeBtn = document.getElementById('closeProformaBtn');
-
-    openBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
+    openBtn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); });
+    closeBtn.addEventListener('click', () => { modal.classList.remove('active'); });
   </script>
-
 </body>
 </html>
